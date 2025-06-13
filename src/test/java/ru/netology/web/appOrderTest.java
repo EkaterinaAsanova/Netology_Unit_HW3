@@ -14,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class appOrderTest {
+public class AppOrderTest {
     private WebDriver driver;
 
 
@@ -41,6 +41,17 @@ public class appOrderTest {
 
     @Test
     void shouldTest() {
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Василий Васильев");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79028039539");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector(".button")).click();
+        WebElement result = driver.findElement(By.cssSelector("[data-test-id='order-success']"));
+        assertTrue(result.isDisplayed());
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", result.getText().trim());
+    }
+
+    @Test
+    void shouldTestWithValidData() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Василий Васильев");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79028039539");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
