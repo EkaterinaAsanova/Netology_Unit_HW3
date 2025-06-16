@@ -18,11 +18,9 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.29.0'
-    testImplementation 'io.github.bonigarcia:webdrivermanager:5.9.3'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.9.9'
 }
 
 test {
     useJUnitPlatform()
-    // свойство chromeoptions.prefs используется для задания настроек браузера в проектах на основе Selenide, выключаем менеджер паролей
-    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
 }
